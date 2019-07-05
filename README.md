@@ -1,6 +1,6 @@
 # brf # 
 
-Small utility package, used in a few of my projects: 
+`brf` is a small utility package, used in a few of my projects: 
 
 - [git-in-sync](https://github.com/jychri/git-in-sync): Keep all of
   your git repos in sync across multiple computers
