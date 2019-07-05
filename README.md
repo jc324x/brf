@@ -10,7 +10,9 @@
 Functions in package `brf` filter, reduce or transform strings and
 string slices. 
 
-The name is a reduction of the word brief.
+The name is a reduction of "brief".
+
+### Example ###
 
 **Strings**
 
