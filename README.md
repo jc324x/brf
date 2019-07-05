@@ -1,28 +1,16 @@
 # brf # 
 
-A small utility package used in several of my open
-source projects:
+Small utility package, used in a few of my projects: 
 
 - [git-in-sync](https://github.com/jychri/git-in-sync): Keep all of
   your git repos in sync across multiple computers
 - [js2x](https://github.com/jychri/js2x): Convert Javascript to Markdown and beyond with js2x
 - [wrangler](https://github.com/jychri/wrangler): Wrangle up macOS user accounts and groups
 
-It's mostly functions for working with string slices: 
+Functions in package `brf` filter, reduce or transform strings and
+string slices.
 
-```go
-// NoBlanks returns a string slice with no blank entries.
-func NoBlanks(bsl []string) (sl []string) {
-	for i := range bsl {
-		if bsl[i] != "" {
-			sl = append(sl, bsl[i])
-		}
-	}
-	return sl
-}
-```
-
-Or for generating summaries of string slices:
+**Strings**
 
 ```go
 // Summary returns a set length string summarizing the contents of a string slice.
@@ -52,5 +40,33 @@ func Summary(sl []string, l int) string {
 	}
 
 	return b.String()
+}
+```
+
+**String Slices**
+
+```go
+// NoBlanks returns a string slice with no blank entries.
+func NoBlanks(bsl []string) (sl []string) {
+	for i := range bsl {
+		if bsl[i] != "" {
+			sl = append(sl, bsl[i])
+		}
+	}
+	return sl
+}
+```
+
+```go
+// ExcludePrefix returns a string slice, excluding entries with the prefix.
+func ExcludePrefix(esl []string, pfx string) (sl []string) {
+	for _, s := range esl {
+		if strings.HasPrefix(s, pfx) {
+			continue
+		} else {
+			sl = append(sl, s)
+		}
+	}
+	return sl
 }
 ```
