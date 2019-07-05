@@ -12,8 +12,6 @@ string slices.
 
 The name is a reduction of "brief".
 
-### Example ###
-
 **Strings**
 
 ```go
