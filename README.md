@@ -1,6 +1,6 @@
 # brf # 
 
-`brf` is a small utility package, used in a few of my projects: 
+`brf` is a small package, used in a few of my open source projects: 
 
 - [git-in-sync](https://github.com/jychri/git-in-sync): Keep all of
   your git repos in sync across multiple computers
@@ -8,9 +8,9 @@
 - [wrangler](https://github.com/jychri/wrangler): Wrangle up macOS user accounts and groups
 
 Functions in package `brf` filter, reduce or transform strings and
-string slices. 
+string slices.
 
-The name is a reduction of "brief".
+The name is a reduction of the word "brief".
 
 **Strings**
 
