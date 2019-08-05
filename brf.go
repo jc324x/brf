@@ -54,6 +54,7 @@ func OnlyPrefix(psl []string, pfx string) (sl []string) {
 			continue
 		}
 	}
+
 	return sl
 }
 
@@ -61,7 +62,6 @@ func OnlyPrefix(psl []string, pfx string) (sl []string) {
 
 // Reduce returns a string slice with no duplicate entries.
 func Reduce(dsl []string) (sl []string) {
-
 	smap := make(map[string]bool)
 
 	for i := range dsl {
@@ -75,7 +75,7 @@ func Reduce(dsl []string) (sl []string) {
 	return sl
 }
 
-// Summary returns a set length string summarizing the contents of a string slice.
+// Summary returns a string $l characters long, summarizing the contents of a string slice.
 func Summary(sl []string, l int) string {
 
 	if len(sl) == 0 {
@@ -106,7 +106,6 @@ func Summary(sl []string, l int) string {
 
 // First returns the first line from a multi line string.
 func First(s string) string {
-
 	lines := strings.Split(strings.TrimSuffix(s, "\n"), "\n")
 
 	if len(lines) >= 1 {
@@ -116,24 +115,21 @@ func First(s string) string {
 	return ""
 }
 
-// Match returns the string after the match...
-func Match(s string, pfx string) string {
-
-	pfx = strings.TrimSpace(pfx)
+// After returns the substring after a matching substring.
+func After(s string, m string) string {
+	m = strings.TrimSpace(m)
 	s = strings.TrimSpace(s)
 
-	if !strings.Contains(s, pfx) {
+	if !strings.Contains(s, m) {
 		return ""
 	}
 
-	s = strings.TrimPrefix(s, pfx)
-
+	s = strings.TrimPrefix(s, m)
 	s = strings.TrimSpace(s)
-
 	return s
 }
 
-// ADD TEST
+// TODO: ADD TEST
 
 // LowerKebab converts a string to lower kebab case
 func LowerKebab(s string) string {
@@ -141,8 +137,6 @@ func LowerKebab(s string) string {
 	s = strings.Replace(s, " ", "-", -1)
 	return s
 }
-
-// ADD TEST
 
 // Trim trims trailing spaces and "\n" markings from a string...
 func Trim(s string) string {
