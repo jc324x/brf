@@ -1,5 +1,3 @@
-# brf # 
-
 Package `brf` collects functions with brief output.
 
 Functions in package `brf` filter, reduce or transform strings and
