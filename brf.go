@@ -17,7 +17,7 @@ func NoBlanks(bsl []string) (sl []string) {
 	return sl
 }
 
-// ExcludeStrings returns a string slice, excluding the entries from a second slice.
+// ExcludeStrings returns a reduced string slice, without the entries from a second slice.
 func ExcludeStrings(msl []string, esl []string) (sl []string) {
 	for _, s := range msl {
 	inner:
@@ -34,7 +34,7 @@ func ExcludeStrings(msl []string, esl []string) (sl []string) {
 	return sl
 }
 
-// ExcludePrefix returns a string slice, excluding entries with the prefix.
+// ExcludePrefix returns a reduced string slice, excluding entries with the prefix.
 func ExcludePrefix(esl []string, pfx string) (sl []string) {
 	for _, s := range esl {
 		if strings.HasPrefix(s, pfx) {
@@ -46,7 +46,7 @@ func ExcludePrefix(esl []string, pfx string) (sl []string) {
 	return sl
 }
 
-// OnlyPrefix returns a string slice, with only entries with the matching prefix.
+// OnlyPrefix returns a reduced string slice, with only entries with the prefix.
 func OnlyPrefix(psl []string, pfx string) (sl []string) {
 	for _, s := range psl {
 		if strings.HasPrefix(s, pfx) {
@@ -59,10 +59,8 @@ func OnlyPrefix(psl []string, pfx string) (sl []string) {
 	return sl
 }
 
-// TODO: rename to ReduceStrings
-
-// Reduce returns a string slice with no duplicate entries.
-func Reduce(dsl []string) (sl []string) {
+// NoDuplicates returns a reduced string slice with no duplicate entries.
+func NoDuplicates(dsl []string) (sl []string) {
 	smap := make(map[string]bool)
 
 	for i := range dsl {
@@ -76,7 +74,7 @@ func Reduce(dsl []string) (sl []string) {
 	return sl
 }
 
-// Summary returns a string $l characters long, summarizing the contents of a string slice.
+// Summary returns a set length string that summarizes the contents of a string slice.
 func Summary(sl []string, l int) string {
 
 	if len(sl) == 0 {
@@ -105,8 +103,8 @@ func Summary(sl []string, l int) string {
 	return b.String()
 }
 
-// First returns the first line from a multi line string.
-func First(s string) (string, error) {
+// FirstLine returns the first line from a multi line string.
+func FirstLine(s string) (string, error) {
 	lines := strings.Split(strings.TrimSuffix(s, "\n"), "\n")
 
 	switch {
@@ -119,7 +117,7 @@ func First(s string) (string, error) {
 	}
 }
 
-// After returns the substring after a matching substring.
+// After returns the substring following a matching substring.
 func After(s string, m string) (string, error) {
 	m = strings.TrimSpace(m)
 	s = strings.TrimSpace(s)
@@ -133,16 +131,15 @@ func After(s string, m string) (string, error) {
 	return s, nil
 }
 
-// TODO: ADD TEST
-
-// LowerKebab converts a string to lower kebab case
+// LowerKebab converts a string to lower kebab case.
 func LowerKebab(s string) string {
 	s = strings.ToLower(s)
 	s = strings.Replace(s, " ", "-", -1)
+	s = strings.Replace(s, "_", "-", -1)
 	return s
 }
 
-// Trim trims trailing spaces and "\n" markings from a string...
+// Trim removes trailing spaces and line breaks from a string.
 func Trim(s string) string {
 	s = strings.TrimSpace(s)
 	s = strings.TrimSuffix(s, "\n")

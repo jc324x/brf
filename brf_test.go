@@ -5,6 +5,17 @@ import (
 	"testing"
 )
 
+func TestNoBlanks(t *testing.T) {
+	in := []string{"", "a", "", "", "b", "", "c"}
+	want := []string{"a", "b", "c"}
+
+	got := NoBlanks(in)
+
+	if !reflect.DeepEqual(want, got) {
+		t.Errorf("NoBlanks: != DeepEqual got: %v != want: %v)", got, want)
+	}
+}
+
 func TestExcludeStrings(t *testing.T) {
 	sl1 := []string{"the", "extra", "sly", "brown", "fox", "jumped", "over", "the", "lazy", "hairy", "dog"}
 	sl2 := []string{"extra", "hairy"}
@@ -49,7 +60,7 @@ func TestOnlyPrefix(t *testing.T) {
 
 }
 
-func TestReduce(t *testing.T) {
+func TestNoDuplicates(t *testing.T) {
 
 	for _, tr := range []struct {
 		in, want []string
@@ -58,7 +69,7 @@ func TestReduce(t *testing.T) {
 		{[]string{"x", "y", "z", "z", "z", "z"}, []string{"x", "y", "z"}},
 	} {
 
-		got := Reduce(tr.in)
+		got := NoDuplicates(tr.in)
 
 		if !reflect.DeepEqual(got, tr.want) {
 			t.Errorf("Single: != DeepEqual (%v -> %v != %v)", tr.in, got, tr.want)
@@ -95,7 +106,7 @@ func TestSummary(t *testing.T) {
 	}
 }
 
-func TestFirst(t *testing.T) {
+func TestFirstLine(t *testing.T) {
 
 	s1 := "First line.\n Second line. \n Third line.\n"
 	s2 := "Only one line."
@@ -109,15 +120,15 @@ func TestFirst(t *testing.T) {
 		{s3, ""},
 	} {
 
-		got := First(tr.in)
+		got, err := FirstLine(tr.in)
 
-		if got != tr.want {
+		if got != tr.want || err != nil {
 			t.Errorf("First: (%v != %v)", got, tr.want)
 		}
 	}
 }
 
-func TestMatchLine(t *testing.T) {
+func TestAfter(t *testing.T) {
 
 	s1 := "- user: jychri "
 	s2 := "  oath_token: 324\n"
@@ -130,10 +141,32 @@ func TestMatchLine(t *testing.T) {
 		{s2, "oath_token:", "324"},
 	} {
 
-		got := Match(tr.in, tr.pfx)
+		got, err := After(tr.in, tr.pfx)
 
-		if got != tr.want {
+		if got != tr.want || err != nil {
 			t.Errorf("MatchLine: ('%v' != '%v')", got, tr.want)
 		}
+	}
+}
+
+func TestLowerKebab(t *testing.T) {
+	in := "a B c_d"
+	want := "a-b-c-d"
+
+	got := LowerKebab(in)
+
+	if !reflect.DeepEqual(want, got) {
+		t.Errorf("LowerKebab: != DeepEqual got: %v != want: %v)", got, want)
+	}
+}
+
+func TestTrim(t *testing.T) {
+	in := "abc \n"
+	want := "abc"
+
+	got := Trim(in)
+
+	if !reflect.DeepEqual(want, got) {
+		t.Errorf("Trim: != DeepEqual got: %v != want: %v)", got, want)
 	}
 }

@@ -1,20 +1,22 @@
 # brf # 
 
-`brf` is a small package, used in a few of my open source projects: 
+Package `brf` collects functions with brief output.
+
+Functions in package `brf` filter, reduce or transform strings and
+string slices. 
+
+*In Projects*
 
 - [git-in-sync](https://github.com/jychri/git-in-sync): Keep all of
   your git repos in sync across multiple computers
 - [js2x](https://github.com/jychri/js2x): Convert Javascript to Markdown and beyond with js2x
 - [wrangler](https://github.com/jychri/wrangler): Wrangle up macOS user accounts and groups
 
-Functions in package `brf` filter, reduce or transform strings and
-string slices.
-
-The name is a reduction of the word "brief".
+*Examples*
 
 **Strings**
 
-```go
+```golang
 // Summary returns a set length string summarizing the contents of a string slice.
 func Summary(sl []string, l int) string {
 
@@ -47,7 +49,7 @@ func Summary(sl []string, l int) string {
 
 **String Slices**
 
-```go
+```golang
 // NoBlanks returns a string slice with no blank entries.
 func NoBlanks(bsl []string) (sl []string) {
 	for i := range bsl {
@@ -59,7 +61,7 @@ func NoBlanks(bsl []string) (sl []string) {
 }
 ```
 
-```go
+```golang
 // ExcludePrefix returns a string slice, excluding entries with the prefix.
 func ExcludePrefix(esl []string, pfx string) (sl []string) {
 	for _, s := range esl {
