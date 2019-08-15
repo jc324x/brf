@@ -4,6 +4,8 @@ Package `brf` collects functions with brief output.
 
 Functions in package `brf` filter, reduce or transform strings and string slices. 
 
+The name is a reduction of "brief".
+
 ## Projects ## 
 
 - [git-in-sync](https://github.com/jychri/git-in-sync): Keep all of
