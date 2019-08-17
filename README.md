@@ -5,6 +5,16 @@ brf
 
 Functions in package `brf` filter, reduce or transform strings and string slices. 
 
+## Examples
+
+```go
+  func Summary(sl []string, l int) string
+
+	sl := []string{"the", "sly", "brown", "fox", "jumped", "over", "the", "lazy"}
+	s := brf.Summary(sl, 15)
+	fmt.Println(s) // "the, sly, brown, fox..." 
+```
+
 ## Projects ## 
 
 - [git-in-sync](https://github.com/jychri/git-in-sync): Keep all of
