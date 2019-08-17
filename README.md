@@ -3,11 +3,7 @@ brf
 
 [![Go Report Card](https://goreportcard.com/badge/github.com/jychri/brf)](https://goreportcard.com/report/github.com/jychri/brf) [![GoDoc](https://godoc.org/github.com/jychri/brf?status.svg)](https://godoc.org/github.com/jychri/brf)
 
-Package `brf` collects functions with brief output.
-
 Functions in package `brf` filter, reduce or transform strings and string slices. 
-
-The name is a reduction of "brief".
 
 ## Projects ## 
 
