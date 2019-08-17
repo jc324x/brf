@@ -17,7 +17,7 @@ func NoBlanks(bsl []string) (sl []string) {
 	return sl
 }
 
-// ExcludeStrings returns a reduced string slice, without the entries from a second slice.
+// ExcludeStrings returns a string slice, without the excluded strings.
 func ExcludeStrings(msl []string, esl []string) (sl []string) {
 	for _, s := range msl {
 	inner:
@@ -34,7 +34,7 @@ func ExcludeStrings(msl []string, esl []string) (sl []string) {
 	return sl
 }
 
-// ExcludePrefix returns a reduced string slice, excluding entries with the prefix.
+// ExcludePrefix returns a string slice, without the excluded prefix strings.
 func ExcludePrefix(esl []string, pfx string) (sl []string) {
 	for _, s := range esl {
 		if strings.HasPrefix(s, pfx) {
@@ -46,7 +46,7 @@ func ExcludePrefix(esl []string, pfx string) (sl []string) {
 	return sl
 }
 
-// OnlyPrefix returns a reduced string slice, with only entries with the prefix.
+// OnlyPrefix returns a string slice, with only matching prefix strings.
 func OnlyPrefix(psl []string, pfx string) (sl []string) {
 	for _, s := range psl {
 		if strings.HasPrefix(s, pfx) {
@@ -59,7 +59,7 @@ func OnlyPrefix(psl []string, pfx string) (sl []string) {
 	return sl
 }
 
-// NoDuplicates returns a reduced string slice with no duplicate entries.
+// NoDuplicates returns a string slice with no duplicate entries.
 func NoDuplicates(dsl []string) (sl []string) {
 	smap := make(map[string]bool)
 
@@ -74,7 +74,7 @@ func NoDuplicates(dsl []string) (sl []string) {
 	return sl
 }
 
-// Summary returns a set length string that summarizes the contents of a string slice.
+// Summary returns string that summarizes the contents of a string slice.
 func Summary(sl []string, l int) string {
 
 	if len(sl) == 0 {
@@ -131,7 +131,7 @@ func After(s string, m string) (string, error) {
 	return s, nil
 }
 
-// LowerKebab converts a string to lower kebab case.
+// LowerKebab returns a string in lower kebab case.
 func LowerKebab(s string) string {
 	s = strings.ToLower(s)
 	s = strings.Replace(s, " ", "-", -1)
@@ -139,7 +139,7 @@ func LowerKebab(s string) string {
 	return s
 }
 
-// Trim removes trailing spaces and line breaks from a string.
+// Trim returns a string without trailing spaces and line breaks.
 func Trim(s string) string {
 	s = strings.TrimSpace(s)
 	s = strings.TrimSuffix(s, "\n")
