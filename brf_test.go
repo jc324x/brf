@@ -120,9 +120,9 @@ func TestFirstLine(t *testing.T) {
 		{s3, ""},
 	} {
 
-		got, err := FirstLine(tr.in)
+		got := FirstLine(tr.in)
 
-		if got != tr.want || err != nil {
+		if got != tr.want {
 			t.Errorf("First: (%v != %v)", got, tr.want)
 		}
 	}
@@ -141,9 +141,9 @@ func TestAfter(t *testing.T) {
 		{s2, "oath_token:", "324"},
 	} {
 
-		got, err := After(tr.in, tr.pfx)
+		got := After(tr.in, tr.pfx)
 
-		if got != tr.want || err != nil {
+		if got != tr.want {
 			t.Errorf("MatchLine: ('%v' != '%v')", got, tr.want)
 		}
 	}

@@ -3,7 +3,6 @@ package brf
 
 import (
 	"bytes"
-	"errors"
 	"strings"
 )
 
@@ -104,31 +103,31 @@ func Summary(sl []string, l int) string {
 }
 
 // FirstLine returns the first line from a multi line string.
-func FirstLine(s string) (string, error) {
+func FirstLine(s string) string {
 	lines := strings.Split(strings.TrimSuffix(s, "\n"), "\n")
 
 	switch {
 	case len(lines) == 0:
-		return "", errors.New("Len == 0")
+		return ""
 	case len(lines) >= 1:
-		return lines[0], nil
+		return lines[0]
 	default:
-		return "", errors.New("Unacceptable lines len")
+		return ""
 	}
 }
 
 // After returns the substring following a matching substring.
-func After(s string, m string) (string, error) {
+func After(s string, m string) string {
 	m = strings.TrimSpace(m)
 	s = strings.TrimSpace(s)
 
 	if !strings.Contains(s, m) {
-		return "", errors.New("No match found")
+		return ""
 	}
 
 	s = strings.TrimPrefix(s, m)
 	s = strings.TrimSpace(s)
-	return s, nil
+	return s
 }
 
 // LowerKebab returns a string in lower kebab case.
