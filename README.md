@@ -1,3 +1,5 @@
+[![Go Report Card](https://goreportcard.com/badge/github.com/jychri/brf)](https://goreportcard.com/report/github.com/jychri/brf) [![GoDoc](https://godoc.org/github.com/jychri/brf?status.svg)](https://godoc.org/github.com/jychri/brf)
+
 ## Summary ##
 
 Package `brf` collects functions with brief output.
